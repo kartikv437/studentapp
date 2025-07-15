@@ -1,0 +1,19 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.logo-container img {
+  max-width: 10%;
+  height: auto;
+  border-radius: 10px;
+}
+.logo-container h1 {
+  margin-left: 10px;
+  font-size: 24px;
+  color: var(--primary);
+}
+.logo-container h1 span {
+  color: var(--secondary);
+}
