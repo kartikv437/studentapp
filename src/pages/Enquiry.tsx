@@ -1,55 +1,9 @@
-import {
-    IonPage,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonItem,
-    IonLabel,
-    IonInput,
-    IonButton,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent,
-    IonBackButton,
-    IonButtons,
-    IonIcon,
-    IonList,
-    IonText,
-    IonImg,
-    IonCol,
-    IonGrid,
-    IonRow,
-} from "@ionic/react";
-import { useHistory, useLocation, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { IonPage, IonContent, IonToolbar, IonButtons, IonBackButton, IonTitle, IonItem, IonLabel, IonInput, IonGrid, IonRow, IonCol, IonButton } from "@ionic/react";
 import Layout from "../components/Layout";
-import "./CourseDetail.css";
-import axios from 'axios';
+import { useState } from "react";
 
-type RouteParams = {
-    id: string;
-};
-
-const CourseDetail: React.FC = () => {
-    const { id } = useParams<RouteParams>();
-    const location = useLocation();
-    const course = location.state as any;
-    const history = useHistory();
-    const courseInfo = {
-        title: id.toUpperCase(),
-        overview: course?.overview || "This is a detailed overview of the course.",
-        curriculum: course?.curriculum || "This is the course curriculum.",
-        duration: course?.duration || "6 months",
-        fee: course?.fee || "₹30,000",
-        eligibility: course?.eligibility || "10+2 or equivalent",
-        id: id,
-    };
-
-    useEffect(() => {
-    }, []);
-
-    // Form states
+const Enqyury: React.FC = () => {
+   // Form states
     const [name, setName] = useState("");
     const [dob, setDob] = useState("");
     const [sex, setSex] = useState("");
@@ -64,11 +18,9 @@ const CourseDetail: React.FC = () => {
         }
     };
 
-    const goToDocUpload = () => {
-        history.push("/doc-upload");
-    }
-
-
+    // const goToDocUpload = () => {
+    //     history.push("/doc-upload");
+    // }
     return (
         <IonPage>
             <Layout />
@@ -79,25 +31,11 @@ const CourseDetail: React.FC = () => {
                         <IonBackButton defaultHref="/" />
                     </IonButtons>
                     <IonTitle>
-                        {/* <h2>{courseInfo.title}</h2> */}
                         <h2>Application Form</h2>
                     </IonTitle>
                 </IonToolbar>
-                {/* Course Info */}
-                {/* <IonCard>
-                    <IonCardHeader>
-                        <IonCardTitle>Overview</IonCardTitle>
-                    </IonCardHeader>
-                    <IonCardContent>
-                        <p>{courseInfo.overview}</p>
-                        <p><strong>Curriculum:</strong> {courseInfo.curriculum}</p>
-                        <p><strong>Duration:</strong> {courseInfo.duration}</p>
-                        <p><strong>Fee:</strong> {courseInfo.fee}</p>
-                        <p><strong>Eligibility:</strong> {courseInfo.eligibility}</p>
-                    </IonCardContent>
-                </IonCard> */}
 
-                {/* Student Details */}
+
                 <IonItem>
                     <IonLabel position="stacked">Full Name</IonLabel>
                     <IonInput value={name} onIonChange={(e) => setName(e.detail.value!)} />
@@ -131,7 +69,7 @@ const CourseDetail: React.FC = () => {
                             </IonButton>
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="block" color="secondary" onClick={() => goToDocUpload()}>
+                            <IonButton expand="block" color="secondary" href="/doc-upload">
                                 Next Step
                             </IonButton>
                         </IonCol>
@@ -140,7 +78,6 @@ const CourseDetail: React.FC = () => {
 
             </IonContent>
         </IonPage>
-    );
-};
-
-export default CourseDetail;
+    )
+}
+export default Enqyury;

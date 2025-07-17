@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './DocUpload.css';
-import { IonBackButton, IonButton, IonButtons, IonContent, IonIcon, IonImg, IonItem, IonLabel, IonList, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonIcon, IonImg, IonItem, IonLabel, IonList, IonPage, IonRow, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import { loadStripe } from "@stripe/stripe-js";
 import Layout from '../components/Layout';
 import { cloudUploadOutline } from 'ionicons/icons';
+import { useHistory } from 'react-router-dom';
 
 const DocUpload: React.FC = (name) => {
 
@@ -15,8 +16,11 @@ const DocUpload: React.FC = (name) => {
         degree: null,
         photo: null,
     });
+
+    const history = useHistory();
     const [url, setUrl] = useState<string>("");
-    // const stripePromise = loadStripe("pk_test_51RjIueFVHBcv9MBM8DUmN7nolHr2TDphpjA6aO6I6WHY815zVvNn8FfihmEdvIRwJ2zTDHOHAdjSw1uUxAk3iMzw00eVxKODP4");
+
+    const stripePromise = loadStripe("pk_test_51RjIueFVHBcv9MBM8DUmN7nolHr2TDphpjA6aO6I6WHY815zVvNn8FfihmEdvIRwJ2zTDHOHAdjSw1uUxAk3iMzw00eVxKODP4");
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, docType: string) => {
         if (e.target.files && e.target.files[0]) {
@@ -43,30 +47,39 @@ const DocUpload: React.FC = (name) => {
         }
     };
 
-    // const handleStripePayment = async () => {
-    //     const stripe = await stripePromise;
+    const goToPassport = () => {
+        // if (!url) {
+        //     alert("Please upload all documents before proceeding.");
+        //     return;
+        // }
+        // Navigate to the passport upload page
+        history.push("/passport");
+    };
 
-    //     const response = await fetch("http://localhost:3001/create-checkout-session", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             courseTitle: "BCA Program",
-    //             price: 4500,
-    //         }),
-    //     });
+    const handleStripePayment = async () => {
+        const stripe = await stripePromise;
 
-    //     const session = await response.json();
+        const response = await fetch("http://localhost:3001/create-checkout-session", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                courseTitle: "BCA Program",
+                price: 4500,
+            }),
+        });
 
-    //     const result = await stripe?.redirectToCheckout({
-    //         sessionId: session.id,
-    //     });
+        const session = await response.json();
 
-    //     if (result?.error) {
-    //         alert(result.error.message);
-    //     }
-    // };
+        const result = await stripe?.redirectToCheckout({
+            sessionId: session.id,
+        });
+
+        if (result?.error) {
+            alert(result.error.message);
+        }
+    };
 
     return (
         <IonPage>
@@ -83,11 +96,11 @@ const DocUpload: React.FC = (name) => {
 
                 <IonList className="upload-form">
                     {[
-                        { label: '🆔 Aadhar Card', key: 'aadhar' },
-                        { label: '📘 10th Marksheet', key: 'tenth' },
-                        { label: '📗 12th Marksheet', key: 'twelfth' },
-                        { label: '🎓 Degree Certificate', key: 'degree' },
-                        { label: '🖼️ Passport-size Photo', key: 'photo' },
+                        { label: 'Aadhar Card', key: 'aadhar' },
+                        { label: '10th Marksheet', key: 'tenth' },
+                        { label: '12th Marksheet', key: 'twelfth' },
+                        { label: 'Degree Certificate', key: 'degree' },
+                        { label: 'Passport-size Photo', key: 'photo' },
                     ].map((doc) => (
                         <IonItem key={doc.key} className="upload-item">
                             <div className="file-upload-wrapper">
@@ -115,16 +128,28 @@ const DocUpload: React.FC = (name) => {
                     ))}
                 </IonList>
 
-                <IonButton expand="block" fill="outline" color="dark" routerLink="/view-uploads">
-                    📂 View Uploaded Documents
-                </IonButton>
+                {/* <IonButton expand="block" fill="outline" color="dark" routerLink="/view-uploads">
+                    View Uploaded Documents
+                </IonButton> */}
 
-                <IonButton expand="block" color="primary" className="submit-btn" onClick={handleSubmit}>
-                    <IonIcon slot="start" icon={cloudUploadOutline} />
-                    Submit Documents
-                </IonButton>
+                <IonGrid>
+                    <IonRow className="ion-justify-content-between">
+                        <IonCol>
+                            <IonButton expand="block" color="primary" onClick={handleSubmit}>
+                                Save
+                            </IonButton>
+                        </IonCol>
 
-
+                        <IonCol>
+                            <IonButton expand="block" color="secondary" onClick={() => goToPassport()}>
+                                Next Step
+                            </IonButton>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
+                {/* <IonButton expand="block" color="secondary" onClick={handleStripePayment}>
+                    Pay Now
+                </IonButton> */}
             </IonContent>
 
         </IonPage>
