@@ -2,7 +2,7 @@ import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonI
 import Layout from "../components/Layout";
 import { useState } from "react";
 import { useHistory } from "react-router";
-import { useTabProgress } from "./TabProgressContext";
+import { useTabProgress } from "../context/TabProgressContext";
 
 const Passport: React.FC = () => {
     const [passportNumber, setPassportNumber] = useState('');

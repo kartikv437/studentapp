@@ -29,7 +29,7 @@ import './PaymentGateway.css';
 import Layout from '../components/Layout';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { useTabProgress } from './TabProgressContext';
+import { useTabProgress } from '../context/TabProgressContext';
 
 const PaymentGateway: React.FC = () => {
 

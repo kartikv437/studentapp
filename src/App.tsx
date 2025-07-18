@@ -52,7 +52,7 @@ import ViewDocuments from './pages/ViewDocuments';
 import Passport from './pages/Passport';
 import Enquiry from './pages/Enquiry';
 import './theme/global.css'
-import { useTabProgress } from './pages/TabProgressContext';
+import { useTabProgress } from './context/TabProgressContext';
 import VerifyOfferLetter from './pages/VerifyOfferLetter';
 import OfferLetter from './pages/OfferLetter';
 import PaymentGateway from './pages/PaymentGateway';

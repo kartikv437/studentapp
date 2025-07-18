@@ -2,7 +2,7 @@ import { IonPage, IonToolbar, IonTitle, IonContent, IonBackButton, IonButtons, I
 import { useHistory, useLocation } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { documentTextOutline, checkmarkCircleOutline, closeCircleOutline, downloadOutline } from 'ionicons/icons';
-import { useTabProgress } from './TabProgressContext';
+import { useTabProgress } from '../context/TabProgressContext';
 
 interface LocationState {
     type?: string;

@@ -21,8 +21,14 @@
   margin-left: 10px;
   font-size: 24px;
   color: var(--bg);
+  position: relative;
+  bottom: 5px;
 }
 
 .logo-container h1 span {
   color: var(--secondary);
+}
+
+.theme-toggle {
+  padding-right: 10px;
 }
