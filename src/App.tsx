@@ -57,43 +57,15 @@ import VerifyOfferLetter from './pages/VerifyOfferLetter';
 import OfferLetter from './pages/OfferLetter';
 import PaymentGateway from './pages/PaymentGateway';
 import VisaProcess from './pages/VisaProcess';
-import { useEffect, useState } from 'react';
 setupIonicReact();
 
 const App: React.FC = () => {
-  const { stepsUnlocked } = useTabProgress();
-  const { unlockStep } = useTabProgress();
+  const { stepsUnlocked, isReady } = useTabProgress();
+  if (!isReady) return null;
+
 
   const disableIfLocked = (requiredStep: number) =>
     stepsUnlocked >= requiredStep ? undefined : 'disabled-tab';
-
-  useEffect(() => {
-    const stepsUnlocked = localStorage.getItem('stepsUnlocked');
-    console.log('stepsUnlocked:', stepsUnlocked);
-
-    if (stepsUnlocked) {
-      unlockStep(parseInt(stepsUnlocked));
-    }
-  }, []);
-
-  const goToTab = (step: number) => {
-    if (step === 1) {
-      localStorage.setItem('stepsUnlocked', '1');
-      unlockStep(1);
-    } else if (step === 2) {
-      localStorage.setItem('stepsUnlocked', '2');
-      unlockStep(2);
-    } else if (step === 3) {
-      localStorage.setItem('stepsUnlocked', '3');
-      unlockStep(3);
-    } else if (step === 4) {
-      localStorage.setItem('stepsUnlocked', '4');
-      unlockStep(4);
-    } else {
-      localStorage.setItem('stepsUnlocked', '1');
-    }
-  }
-
 
   return (
     <IonApp>
@@ -111,6 +83,7 @@ const App: React.FC = () => {
             <Route path="/blog">
               <Blog />
             </Route>
+
             <Route exact path="/">
               <Redirect to="/enquiry" />
             </Route>
@@ -123,8 +96,8 @@ const App: React.FC = () => {
             <Route exact path="/payment-gateway" component={PaymentGateway} />
             <Route exact path="/visa-process" component={VisaProcess} />
           </IonRouterOutlet>
-          
-          <IonTabBar slot="bottom">
+
+          <IonTabBar slot="bottom" className='tab-bar'>
             {/* <IonTabButton tab="home" href="/home">
             <IonIcon aria-hidden="true" icon={home} />
             <IonLabel>Home</IonLabel>
@@ -137,29 +110,25 @@ const App: React.FC = () => {
             <IonIcon aria-hidden="true" icon={videocam} />
             <IonLabel>Blog</IonLabel>
           </IonTabButton> */}
-            <IonTabButton tab="Enquiry" href="/enquiry"
-              onClick={() => goToTab(1)}>
+            <IonTabButton tab="Enquiry" href="/enquiry"            >
               <IonIcon aria-hidden="true" icon={helpCircleOutline} />
               <IonLabel>Enquiry</IonLabel>
             </IonTabButton>
 
-            <IonTabButton tab="Verification" href={stepsUnlocked >= 2 ? '/offer-letter' : undefined}
-              className={stepsUnlocked >= 2 ? undefined : 'disabled-tab'}
-              onClick={() => goToTab(2)}>
+            <IonTabButton tab="VerifyOfferLetter" href={stepsUnlocked >= 2 ? '/verify-offer-letter' : undefined}
+              className={disableIfLocked(2)}>
               <IonIcon aria-hidden="true" icon={document} />
               <IonLabel>COL/UOL</IonLabel>
             </IonTabButton>
 
-            <IonTabButton tab="Payment" href={stepsUnlocked >= 3 ? '/payment-gateway' : undefined}
-              className={stepsUnlocked >= 3 ? undefined : 'disabled-tab'}
-              onClick={() => goToTab(3)}>
+            <IonTabButton tab="PaymentGateway" href={stepsUnlocked >= 3 ? '/payment-gateway' : undefined}
+              className={disableIfLocked(3)}>
               <IonIcon aria-hidden="true" icon={cardOutline} />
               <IonLabel>Payment</IonLabel>
             </IonTabButton>
 
-            <IonTabButton tab="Visa" href={stepsUnlocked >= 4 ? '/visa-process' : undefined}
-              className={stepsUnlocked >= 4 ? undefined : 'disabled-tab'}
-              onClick={() => goToTab(4)}>
+            <IonTabButton tab="VisaProcess" href={stepsUnlocked >= 4 ? '/visa-process' : undefined}
+              className={disableIfLocked(4)}>
               <IonIcon aria-hidden="true" icon={airplaneOutline} />
               <IonLabel>Visa</IonLabel>
             </IonTabButton>

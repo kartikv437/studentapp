@@ -13,7 +13,9 @@ body {
   color: var(--text);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 700;
   color: var(--primary);
 }
@@ -33,7 +35,22 @@ ion-card {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   background-color: white;
 }
+
 .disabled-tab {
   opacity: 0.4;
   pointer-events: none;
+}
+
+.tab-bar {
+  --background: cadetblue;
+  --color: white;
+}
+
+.tab-selected {
+  --background: white;
+  color: cadetblue;
+}
+
+.ion-padding{
+      --background: #c2ddde;
 }

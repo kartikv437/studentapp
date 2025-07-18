@@ -1,4 +1,4 @@
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonSpinner, IonText, IonTitle, IonToolbar } from "@ionic/react";
+import { IonBackButton, IonButtons, IonContent, IonItem, IonLabel, IonList, IonPage, IonSpinner, IonText, IonTitle, IonToolbar } from "@ionic/react";
 import Layout from "../components/Layout";
 import { useState, useEffect } from "react";
 import "./ViewDocuments.css";

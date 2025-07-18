@@ -1,6 +1,6 @@
 import { IonPage, IonContent, IonToolbar, IonButtons, IonBackButton, IonTitle, IonInput, IonItem, IonLabel, IonButton } from "@ionic/react";
 import Layout from "../components/Layout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
 const VerifyOfferLetter: React.FC = () => {
@@ -10,7 +10,13 @@ const VerifyOfferLetter: React.FC = () => {
     const [unconditional, setUnconditional] = useState(false);
     const [interviewStatus, setInterviewStatus] = useState(false);
     const history = useHistory();
-    
+
+    useEffect(() => {
+        if (!localStorage.getItem('stepsUnlocked')) {
+            history.push('/');
+        }
+    }, []);
+
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = event.target.files?.[0];
         // check extentions
@@ -41,8 +47,9 @@ const VerifyOfferLetter: React.FC = () => {
     const sendEmail = () => {
         // Logic to send email for scheduling interview
         setStatusText("Interview schedule link has been sent to your registered email address.");
+        setInterviewStatus(true);
         setTimeout(() => {
-            setInterviewStatus(true);
+
             setStatusText("Interview passed successfully. You can download the offer letter.");
             setStatus(true);
             setUnconditional(false);
@@ -67,20 +74,32 @@ const VerifyOfferLetter: React.FC = () => {
                         <h2>Offer Letter</h2>
                     </IonTitle>
                 </IonToolbar>
-                <IonItem>
-                    <IonLabel>Upload English Proficiency Certificate</IonLabel>
-                    <input type="file" accept=".pdf,.doc,.docx" style={{ padding: "8px 0" }} onChange={handleFileChange} />
-                </IonItem>
+
+                {!interviewStatus && (
+                    <IonItem>
+                        <IonLabel>Upload English Proficiency Certificate</IonLabel>
+                        <input type="file" accept=".pdf,.doc,.docx" style={{ padding: "8px 0" }} onChange={handleFileChange} />
+                    </IonItem>
+                )}
+
+
                 {/* if certificate not available then schedule interview */}
-                {!file && (
+                {!file && !interviewStatus && (
                     <IonItem>
                         <IonLabel color="danger">No certificate uploaded. Please upload your certificate or schedule an interview.</IonLabel>
                     </IonItem>
                 )}
                 {/* if certificate is available then show the button to download the offer letter */}
-                {file && (
+                {file && !interviewStatus && (
                     <IonItem>
                         <IonLabel color="success">Certificate uploaded: {file}</IonLabel>
+                    </IonItem>
+                )}
+                {!file && !interviewStatus && (
+                    <IonItem>
+                        <IonButton expand="block" color="primary" onClick={sendEmail}>
+                            Schedule Interview
+                        </IonButton>
                     </IonItem>
                 )}
                 {/* if certificate is available then show the button to download the offer letter */}
@@ -91,24 +110,15 @@ const VerifyOfferLetter: React.FC = () => {
                 )}
                 {status && (
                     <IonItem>
-                        <IonButton expand="block"  color="primary" onClick={() => goToOfferLetter('conditional')}>
+                        <IonButton expand="block" color="primary" onClick={() => goToOfferLetter('conditional')}>
                             View Conditional Offer Letter
                         </IonButton>
                     </IonItem>
                 )}
                 {unconditional && (
                     <IonItem>
-                        <IonButton expand="block" color="secondary"  onClick={() => goToOfferLetter('unconditional')}>
+                        <IonButton expand="block" color="secondary" onClick={() => goToOfferLetter('unconditional')}>
                             View Unconditional Offer Letter
-                        </IonButton>
-                    </IonItem>
-                )}
-
-                {/* if certificate is not available then show the button to schedule interview */}
-                {!file && !interviewStatus && (
-                    <IonItem>
-                        <IonButton expand="block" color="primary" onClick={sendEmail}>
-                            Schedule Interview
                         </IonButton>
                     </IonItem>
                 )}

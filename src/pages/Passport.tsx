@@ -60,7 +60,8 @@ const Passport: React.FC = () => {
                             <IonButton expand="block" color="primary" disabled={!!passportStatus} onClick={checkStatus}>Check Status</IonButton>
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="block" color="secondary" disabled={!passportStatus} onClick={goToNextStep}>Next Step</IonButton>
+                             {/* disabled={!passportStatus} */}
+                            <IonButton expand="block" color="secondary" onClick={goToNextStep}>Next Step</IonButton>
                         </IonCol>
                     </IonRow>
                 </IonGrid>

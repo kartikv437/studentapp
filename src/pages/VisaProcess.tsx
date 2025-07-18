@@ -28,13 +28,21 @@ import {
   shieldCheckmarkOutline
 } from 'ionicons/icons';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
+import { useHistory } from 'react-router';
 
 const VisaProcess: React.FC = () => {
   const [visaStage1Uploaded, setStage1Uploaded] = useState(false);
   const [visaStage2Uploaded, setStage2Uploaded] = useState(false);
   const [visaVerified, setVisaVerified] = useState(false);
+  const history = useHistory();
+  
+  useEffect(() => {
+    if (!localStorage.getItem('stepsUnlocked')) {
+      history.push('/');
+    }
+  }, []);
 
   const handleUploadStage1 = () => {
     setStage1Uploaded(true);

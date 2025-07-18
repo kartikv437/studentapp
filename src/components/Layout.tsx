@@ -3,8 +3,8 @@ import './Layout.css';
 
 const Layout: React.FC = () => {
     return (
-        <IonHeader>
-            <IonToolbar>
+        <IonHeader >
+            <IonToolbar className="custom-header">
                 <div slot="start" className="logo-container">
                     <img src="/student.jpg" alt="Student App Logo" />
                     <IonTitle>

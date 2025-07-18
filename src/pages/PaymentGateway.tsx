@@ -27,7 +27,7 @@ import {
 } from 'ionicons/icons';
 import './PaymentGateway.css';
 import Layout from '../components/Layout';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { useTabProgress } from './TabProgressContext';
 
@@ -39,6 +39,12 @@ const PaymentGateway: React.FC = () => {
     const [nameOnCard, setNameOnCard] = useState('');
     const history = useHistory();
     const { unlockStep } = useTabProgress();
+
+    useEffect(() => {
+        if (!localStorage.getItem('stepsUnlocked')) {
+            history.push('/');
+        }
+    }, []);
 
     const goToVisaProcess = () => {
         // Logic to navigate to the visa process page

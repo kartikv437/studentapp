@@ -1,7 +1,14 @@
+.custom-header {
+  --background: cadetblue;
+  --border-width: 0.5;
+  --border-color: #309194;
+}
+
 .logo-container {
   display: flex;
   align-items: center;
   padding: 5px;
+  padding-left: 10px;
 }
 
 .logo-container img {
@@ -9,11 +16,13 @@
   height: auto;
   border-radius: 10px;
 }
+
 .logo-container h1 {
   margin-left: 10px;
   font-size: 24px;
-  color: var(--primary);
+  color: var(--bg);
 }
+
 .logo-container h1 span {
   color: var(--secondary);
 }
