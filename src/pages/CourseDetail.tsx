@@ -21,7 +21,7 @@ import {
     IonGrid,
     IonRow,
 } from "@ionic/react";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import "./CourseDetail.css";

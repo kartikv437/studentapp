@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IonList, IonItem, IonLabel, IonIcon } from '@ionic/react';
 import { chevronDown, chevronForward, create, list } from 'ionicons/icons';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import './CoursesList.css';
 import CourseCard from './CourseCard';
 

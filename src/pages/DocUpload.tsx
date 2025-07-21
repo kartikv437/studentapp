@@ -5,7 +5,7 @@ import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonI
 import { loadStripe } from "@stripe/stripe-js";
 import Layout from '../components/Layout';
 import { cloudUploadOutline } from 'ionicons/icons';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 const DocUpload: React.FC = (name) => {
 

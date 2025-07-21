@@ -18,9 +18,6 @@ const Enqyury: React.FC = () => {
         }
     };
 
-    // const goToDocUpload = () => {
-    //     history.push("/doc-upload");
-    // }
     return (
         <IonPage>
             <Layout />
