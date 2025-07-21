@@ -11,6 +11,7 @@ interface LocationState {
 const OfferLetter: React.FC = () => {
     const location = useLocation<LocationState>();
     const { type } = location.state || {};
+    const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
     const history = useHistory();
     const { unlockStep } = useTabProgress();
 
@@ -25,8 +26,10 @@ const OfferLetter: React.FC = () => {
         <IonPage>
             <Layout />
             <IonContent className="ion-padding">
-                <IonToolbar>
-                    <IonTitle>{type} Offer Letter</IonTitle>
+                <IonToolbar color="light">
+                    {/* <IonTitle> */}
+                        <h2>{capitalizeFirstLetter(type ?? '')} Offer Letter</h2>
+                    {/* </IonTitle> */}
                     <IonButtons slot="start">
                         <IonBackButton defaultHref="/" />
                     </IonButtons>

@@ -43,7 +43,7 @@ const Passport: React.FC = () => {
             {/* Check Passport Status */}
             <IonContent className="ion-padding">
                 <IonToolbar color="light">
-                    <IonTitle>Check Passport Status</IonTitle>
+                    <h2>Check Passport Status</h2>
                     <IonButtons slot="start">
                         <IonBackButton defaultHref="/" />
                     </IonButtons>

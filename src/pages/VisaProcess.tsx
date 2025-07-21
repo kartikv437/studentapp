@@ -65,8 +65,8 @@ const VisaProcess: React.FC = () => {
       <Layout />
 
       <IonContent className="ion-padding">
-        <IonToolbar>
-          <IonTitle>Visa Processing</IonTitle>
+        <IonToolbar color="light">
+          <h2>Visa Processing</h2>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" />
           </IonButtons>
