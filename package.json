@@ -1,9 +1,9 @@
 {
+  "homepage": "https://kartikv437.github.io/studentapp",
   "name": "courses",
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "homepage": "https://kartikv437.github.io/studentapp",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

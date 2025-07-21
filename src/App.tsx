@@ -69,37 +69,38 @@ const App: React.FC = () => {
 
   return (
     <IonApp>
-      <IonReactHashRouter>
-      <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
+      {/* <IonReactRouter> */}
+        <IonReactHashRouter>
+          <IonTabs>
+            
+            <IonRouterOutlet>
 
-            <Route exact path="/enquiry">
-              <Enquiry />
-            </Route>
-            <Route exact path="/course">
-              <Course />
-            </Route>
-            <Route exact path="/course/:id" component={CourseDetail} />
-            <Route path="/blog">
-              <Blog />
-            </Route>
+              <Route exact path="/enquiry">
+                <Enquiry />
+              </Route>
+              <Route exact path="/course">
+                <Course />
+              </Route>
+              <Route exact path="/course/:id" component={CourseDetail} />
+              <Route path="/blog">
+                <Blog />
+              </Route>
 
-            <Route exact path="/">
-              <Redirect to="/enquiry" />
-            </Route>
+              <Route exact path="/">
+                <Redirect to="/enquiry" />
+              </Route>
 
-            <Route exact path="/doc-upload" component={DocUpload} />
-            <Route exact path="/view-uploads" component={ViewDocuments} />
-            <Route exact path="/passport" component={Passport} />
-            <Route exact path="/verify-offer-letter" component={VerifyOfferLetter} />
-            <Route exact path="/offer-letter" component={OfferLetter} />
-            <Route exact path="/payment-gateway" component={PaymentGateway} />
-            <Route exact path="/visa-process" component={VisaProcess} />
-          </IonRouterOutlet>
+              <Route exact path="/doc-upload" component={DocUpload} />
+              <Route exact path="/view-uploads" component={ViewDocuments} />
+              <Route exact path="/passport" component={Passport} />
+              <Route exact path="/verify-offer-letter" component={VerifyOfferLetter} />
+              <Route exact path="/offer-letter" component={OfferLetter} />
+              <Route exact path="/payment-gateway" component={PaymentGateway} />
+              <Route exact path="/visa-process" component={VisaProcess} />
+            </IonRouterOutlet>
 
-          <IonTabBar slot="bottom" className='tab-bar'>
-            {/* <IonTabButton tab="home" href="/home">
+            <IonTabBar slot="bottom" className='tab-bar'>
+              {/* <IonTabButton tab="home" href="/home">
             <IonIcon aria-hidden="true" icon={home} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
@@ -111,33 +112,33 @@ const App: React.FC = () => {
             <IonIcon aria-hidden="true" icon={videocam} />
             <IonLabel>Blog</IonLabel>
           </IonTabButton> */}
-            <IonTabButton tab="Enquiry" href="/enquiry"            >
-              <IonIcon aria-hidden="true" icon={helpCircleOutline} />
-              <IonLabel>Enquiry</IonLabel>
-            </IonTabButton>
+              <IonTabButton tab="Enquiry" href="/enquiry"            >
+                <IonIcon aria-hidden="true" icon={helpCircleOutline} />
+                <IonLabel>Enquiry</IonLabel>
+              </IonTabButton>
 
-            <IonTabButton tab="VerifyOfferLetter" href={stepsUnlocked >= 2 ? '/verify-offer-letter' : undefined}
-              className={disableIfLocked(2)}>
-              <IonIcon aria-hidden="true" icon={document} />
-              <IonLabel>COL/UOL</IonLabel>
-            </IonTabButton>
+              <IonTabButton tab="VerifyOfferLetter" href={stepsUnlocked >= 2 ? '/verify-offer-letter' : undefined}
+                className={disableIfLocked(2)}>
+                <IonIcon aria-hidden="true" icon={document} />
+                <IonLabel>COL/UOL</IonLabel>
+              </IonTabButton>
 
-            <IonTabButton tab="PaymentGateway" href={stepsUnlocked >= 3 ? '/payment-gateway' : undefined}
-              className={disableIfLocked(3)}>
-              <IonIcon aria-hidden="true" icon={cardOutline} />
-              <IonLabel>Payment</IonLabel>
-            </IonTabButton>
+              <IonTabButton tab="PaymentGateway" href={stepsUnlocked >= 3 ? '/payment-gateway' : undefined}
+                className={disableIfLocked(3)}>
+                <IonIcon aria-hidden="true" icon={cardOutline} />
+                <IonLabel>Payment</IonLabel>
+              </IonTabButton>
 
-            <IonTabButton tab="VisaProcess" href={stepsUnlocked >= 4 ? '/visa-process' : undefined}
-              className={disableIfLocked(4)}>
-              <IonIcon aria-hidden="true" icon={airplaneOutline} />
-              <IonLabel>Visa</IonLabel>
-            </IonTabButton>
+              <IonTabButton tab="VisaProcess" href={stepsUnlocked >= 4 ? '/visa-process' : undefined}
+                className={disableIfLocked(4)}>
+                <IonIcon aria-hidden="true" icon={airplaneOutline} />
+                <IonLabel>Visa</IonLabel>
+              </IonTabButton>
 
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
-      </IonReactHashRouter>
+            </IonTabBar>
+          </IonTabs>
+        </IonReactHashRouter>
+      {/* </IonReactRouter> */}
 
     </IonApp>
   );
