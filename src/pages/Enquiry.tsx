@@ -1,15 +1,16 @@
 import { IonPage, IonContent, IonToolbar, IonButtons, IonBackButton, IonTitle, IonItem, IonLabel, IonInput, IonGrid, IonRow, IonCol, IonButton } from "@ionic/react";
 import Layout from "../components/Layout";
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 const Enqyury: React.FC = () => {
-   // Form states
+    // Form states
     const [name, setName] = useState("");
     const [dob, setDob] = useState("");
     const [sex, setSex] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-
+    const history = useHistory();
 
     const handleProceed = () => {
         if (!name || !email || !phone || !dob || !sex) {
@@ -17,6 +18,10 @@ const Enqyury: React.FC = () => {
             return;
         }
     };
+
+   const goToDocUpload = () => {
+        history.push("/doc-upload");
+    }
 
     return (
         <IonPage>
@@ -66,7 +71,7 @@ const Enqyury: React.FC = () => {
                             </IonButton>
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="block" color="secondary" href="/doc-upload">
+                            <IonButton expand="block" color="secondary" onClick={() => goToDocUpload()}>
                                 Next Step
                             </IonButton>
                         </IonCol>
