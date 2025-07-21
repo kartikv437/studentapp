@@ -84,7 +84,7 @@ const App: React.FC = () => {
               <Blog />
             </Route>
 
-            <Route exact path="/">
+            <Route exact path="/" >
               <Redirect to="/enquiry" />
             </Route>
 
