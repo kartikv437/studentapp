@@ -9,7 +9,7 @@ import {
   IonTabs,
   setupIonicReact
 } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonReactHashRouter, IonReactRouter } from '@ionic/react-router';
 import { airplaneOutline, cardOutline, document, helpCircleOutline, home, square, triangle, videocam } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
@@ -69,6 +69,7 @@ const App: React.FC = () => {
 
   return (
     <IonApp>
+      <IonReactHashRouter>
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
@@ -136,6 +137,8 @@ const App: React.FC = () => {
           </IonTabBar>
         </IonTabs>
       </IonReactRouter>
+      </IonReactHashRouter>
+
     </IonApp>
   );
 }
