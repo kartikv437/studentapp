@@ -1,8 +1,8 @@
 import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react"
-import Layout from "../components/Layout";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { useTabProgress } from "../context/TabProgressContext";
+import Header from "../components/Header";
 
 const Passport: React.FC = () => {
     const [passportNumber, setPassportNumber] = useState('');
@@ -39,7 +39,7 @@ const Passport: React.FC = () => {
 
     return (
         <IonPage>
-            <Layout />
+            <Header />
             {/* Check Passport Status */}
             <IonContent className="ion-padding">
                 <IonToolbar color="light">

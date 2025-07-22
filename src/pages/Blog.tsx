@@ -1,10 +1,10 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
-import Layout from "../components/Layout";
+import Header from "../components/Header";
 
 const Blog: React.FC = () => {
     return (
         <IonPage>
-            <Layout/>
+            <Header />
                 <IonContent fullscreen>
                     <IonToolbar>
                         <IonTitle size="large">

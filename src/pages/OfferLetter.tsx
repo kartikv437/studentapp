@@ -1,8 +1,8 @@
 import { IonPage, IonToolbar, IonTitle, IonContent, IonBackButton, IonButtons, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonItem, IonLabel, IonList, IonText } from '@ionic/react';
 import { useHistory, useLocation } from 'react-router';
-import Layout from '../components/Layout';
 import { documentTextOutline, checkmarkCircleOutline, closeCircleOutline, downloadOutline } from 'ionicons/icons';
 import { useTabProgress } from '../context/TabProgressContext';
+import Header from '../components/Header';
 
 interface LocationState {
     type?: string;
@@ -24,7 +24,7 @@ const OfferLetter: React.FC = () => {
 
     return (
         <IonPage>
-            <Layout />
+            <Header />
             <IonContent className="ion-padding">
                 <IonToolbar color="light">
                     {/* <IonTitle> */}

@@ -1,8 +1,6 @@
 import {
   IonPage,
-  IonHeader,
   IonToolbar,
-  IonTitle,
   IonContent,
   IonCard,
   IonCardHeader,
@@ -24,13 +22,12 @@ import {
   cloudUploadOutline,
   documentOutline,
   checkmarkCircleOutline,
-  closeCircleOutline,
   shieldCheckmarkOutline
 } from 'ionicons/icons';
 
 import { useEffect, useState } from 'react';
-import Layout from '../components/Layout';
 import { useHistory } from 'react-router';
+import Header from '../components/Header';
 
 const VisaProcess: React.FC = () => {
   const [visaStage1Uploaded, setStage1Uploaded] = useState(false);
@@ -62,7 +59,7 @@ const VisaProcess: React.FC = () => {
 
   return (
     <IonPage>
-      <Layout />
+      <Header />
 
       <IonContent className="ion-padding">
         <IonToolbar color="light">

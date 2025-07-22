@@ -1,7 +1,7 @@
 import { IonBackButton, IonButtons, IonContent, IonItem, IonLabel, IonList, IonPage, IonSpinner, IonText, IonTitle, IonToolbar } from "@ionic/react";
-import Layout from "../components/Layout";
 import { useState, useEffect } from "react";
 import "./ViewDocuments.css";
+import Header from "../components/Header";
 interface DocumentItem {
   fileUrl: string;
   displayName: string;
@@ -54,7 +54,7 @@ const ViewDocuments: React.FC = () => {
 
   return (
     <IonPage>
-      <Layout />
+      <Header />
       <IonContent className="ion-padding">
         <IonToolbar color="light">
           <IonButtons slot="start">

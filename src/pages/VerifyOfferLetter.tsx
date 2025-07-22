@@ -1,7 +1,7 @@
 import { IonPage, IonContent, IonToolbar, IonButtons, IonBackButton, IonTitle, IonInput, IonItem, IonLabel, IonButton } from "@ionic/react";
-import Layout from "../components/Layout";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import Header from "../components/Header";
 
 const VerifyOfferLetter: React.FC = () => {
     const [file, setFile] = useState("");
@@ -64,7 +64,7 @@ const VerifyOfferLetter: React.FC = () => {
 
     return (
         <IonPage>
-            <Layout />
+            <Header />
             <IonContent className="ion-padding">
                 <IonToolbar color="light">
                     <IonButtons slot="start">

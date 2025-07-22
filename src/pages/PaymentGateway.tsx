@@ -26,10 +26,10 @@ import {
     keyOutline
 } from 'ionicons/icons';
 import './PaymentGateway.css';
-import Layout from '../components/Layout';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { useTabProgress } from '../context/TabProgressContext';
+import Header from '../components/Header';
 
 const PaymentGateway: React.FC = () => {
 
@@ -55,7 +55,7 @@ const PaymentGateway: React.FC = () => {
 
     return (
         <IonPage>
-            <Layout />
+            <Header />
 
             <IonContent className="ion-padding">
                 <IonToolbar>

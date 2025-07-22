@@ -3,9 +3,9 @@ import axios from 'axios';
 import './DocUpload.css';
 import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonIcon, IonImg, IonItem, IonLabel, IonList, IonPage, IonRow, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import { loadStripe } from "@stripe/stripe-js";
-import Layout from '../components/Layout';
 import { cloudUploadOutline } from 'ionicons/icons';
 import { useHistory } from 'react-router';
+import Header from '../components/Header';
 
 const DocUpload: React.FC = (name) => {
 
@@ -39,7 +39,7 @@ const DocUpload: React.FC = (name) => {
         });
 
         try {
-            const response = await axios.post('http://localhost:3001/upload', formData);
+            const response = await axios.post('https://studentapp-node-backend.onrender.com/upload', formData);
             setUrl(response.data.url);
         } catch (err) {
             console.error("Upload failed", err);
@@ -83,7 +83,7 @@ const DocUpload: React.FC = (name) => {
 
     return (
         <IonPage>
-            <Layout />
+            <Header />
             <IonContent className="ion-padding">
                 <IonToolbar color="light" className="upload-header">
                     <IonButtons slot="start">

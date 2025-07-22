@@ -7,25 +7,17 @@ import {
     IonLabel,
     IonInput,
     IonButton,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent,
     IonBackButton,
     IonButtons,
-    IonIcon,
-    IonList,
-    IonText,
-    IonImg,
     IonCol,
     IonGrid,
     IonRow,
 } from "@ionic/react";
 import { useHistory, useLocation, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import Layout from "../components/Layout";
 import "./CourseDetail.css";
 import axios from 'axios';
+import Header from "../components/Header";
 
 type RouteParams = {
     id: string;
@@ -71,7 +63,7 @@ const CourseDetail: React.FC = () => {
 
     return (
         <IonPage>
-            <Layout />
+           <Header />
             <IonContent className="ion-padding">
 
                 <IonToolbar color="light">

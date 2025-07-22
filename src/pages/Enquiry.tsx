@@ -1,7 +1,7 @@
-import { IonPage, IonContent, IonToolbar, IonButtons, IonBackButton, IonTitle, IonItem, IonLabel, IonInput, IonGrid, IonRow, IonCol, IonButton } from "@ionic/react";
-import Layout from "../components/Layout";
+import { IonPage, IonContent, IonToolbar, IonButtons, IonBackButton, IonTitle, IonItem, IonLabel, IonInput, IonGrid, IonRow, IonCol, IonButton, IonSelect, IonSelectOption } from "@ionic/react";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import Header from "../components/Header";
 
 const Enqyury: React.FC = () => {
     // Form states
@@ -12,10 +12,28 @@ const Enqyury: React.FC = () => {
     const [phone, setPhone] = useState("");
     const history = useHistory();
 
-    const handleProceed = () => {
+    const handleProceed = async () => {
         if (!name || !email || !phone || !dob || !sex) {
             alert("Please fill in all fields and upload all required documents.");
             return;
+        }
+        try{
+            const response = await fetch("https://studentapp-node-backend.onrender.com/submit-application", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    fullName:name,
+                    dateOfBirth:dob,
+                    email:email,
+                    phoneNumber:phone,
+                    gender:sex,
+                }),
+            });
+        }
+        catch(error){
+            console.log(error);
         }
     };
 
@@ -25,7 +43,7 @@ const Enqyury: React.FC = () => {
 
     return (
         <IonPage>
-            <Layout />
+            <Header />
             <IonContent className="ion-padding">
 
                 <IonToolbar color="light">
@@ -50,7 +68,13 @@ const Enqyury: React.FC = () => {
 
                 <IonItem>
                     <IonLabel position="stacked">Sex</IonLabel>
-                    <IonInput value={sex} onIonChange={(e) => setSex(e.detail.value!)} />
+                    {/* select sex */}
+                    <IonSelect value={sex} onIonChange={(e) => setSex(e.detail.value!)}>
+                        <IonSelectOption value="Male">Male</IonSelectOption>
+                        <IonSelectOption value="Female">Female</IonSelectOption>
+                        <IonSelectOption value="Other">Other</IonSelectOption>
+                    </IonSelect>
+                    {/* <IonInput value={sex} onIonChange={(e) => setSex(e.detail.value!)} /> */}
                 </IonItem>
 
                 <IonItem>

@@ -1,12 +1,12 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonPage } from "@ionic/react";
-import Layout from "../components/Layout";
 import News from "../components/News";
 import Events from "../components/Events";
+import Header from "../components/Header";
 
 const Home: React.FC = () => {
   return (
     <IonPage>
-      <Layout />
+      <Header />
       <IonContent fullscreen className="ion-padding">
 
         {/* Banner Section */}

@@ -1,11 +1,11 @@
 import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 import CoursesList from "../components/CoursesList";
-import Layout from "../components/Layout";
+import Header from "../components/Header";
 
 const Course: React.FC = () => {
   return (
     <IonPage>
-      <Layout />
+     <Header />
       <IonContent fullscreen>
         <IonToolbar color="light">
           <IonButtons slot="start">
